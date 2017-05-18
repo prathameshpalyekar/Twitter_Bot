@@ -48,15 +48,49 @@ var bot = new Twit({
 //     }
 // )
 
-bot.get('friends/list', {screen_name: 'Pratham_bot'}, 
+// bot.get('friends/ids', {screen_name: 'Pratham_bot'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             // data.users.forEach(function(user) {
+//             //     console.log(user.name);
+//             // })
+//             console.log(data);
+//         }
+//     }
+// )
+
+// bot.get('friends/list', {screen_name: 'Pratham_bot'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             data.users.forEach(function(user) {
+//                 console.log(user.name);
+//             })
+//             // console.log(data);
+//         }
+//     }
+// )
+
+// bot.get('friendships/lookup', {screen_name: 'Sud_Verma187'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data);
+//         }
+//     }
+// )
+
+bot.post('direct_messages/new', 
+    {screen_name: 'Sud_Verma187', text: 'Hi Sud, this message is sent from twitter bot.'}, 
     function(err, data, response) {
         if (err) {
             console.log(err);
         } else {
-            data.users.forEach(function(user) {
-                console.log(user.name);
-            })
-            // console.log(data);
+            console.log(data)
         }
     }
 )
