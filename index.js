@@ -31,7 +31,9 @@ bot.get('followers/list', {screen_name: 'Pratham_bot'},
         if (err) {
             console.log(err);
         } else {
-            console.log(data)
+            data.users.forEach(function(user) {
+                console.log(user.name);
+            })
         }
     }
 )
