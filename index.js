@@ -26,7 +26,29 @@ var bot = new Twit({
 //     }
 // )
 
-bot.get('followers/list', {screen_name: 'Pratham_bot'}, 
+// bot.get('followers/list', {screen_name: 'Pratham_bot'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             data.users.forEach(function(user) {
+//                 console.log(user.screen_name);
+//             })
+//         }
+//     }
+// )
+
+// bot.post('friendships/create', {screen_name: 'Sud_Verma187'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data)
+//         }
+//     }
+// )
+
+bot.get('friends/list', {screen_name: 'Pratham_bot'}, 
     function(err, data, response) {
         if (err) {
             console.log(err);
@@ -34,6 +56,7 @@ bot.get('followers/list', {screen_name: 'Pratham_bot'},
             data.users.forEach(function(user) {
                 console.log(user.name);
             })
+            // console.log(data);
         }
     }
 )
