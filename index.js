@@ -16,7 +16,17 @@ var bot = new Twit({
 // 	}
 // })
 
-bot.get('followers/ids', {screen_name: 'Pratham_bot'}, 
+// bot.get('followers/ids', {screen_name: 'Pratham_bot'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data)
+//         }
+//     }
+// )
+
+bot.get('followers/list', {screen_name: 'Pratham_bot'}, 
     function(err, data, response) {
         if (err) {
             console.log(err);
