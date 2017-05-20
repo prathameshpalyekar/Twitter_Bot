@@ -112,7 +112,38 @@ function getBotTimeline() {
     )
 }
 
-getBotTimeline();
+// getBotTimeline();
+
+// bot.post('statuses/unretweet/:id', {id: '865980490259582980'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data.text + ' was unretweeted.');
+//         }
+//     }
+// )
+
+// bot.post('favorites/create', {id: '865980490259582980'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data.text + ' was liked.');
+//         }
+//     }
+// )
+
+bot.post('statuses/update', 
+    {status: '@premierleague yay!', in_reply_to_status_id: '865980490259582980'}, 
+    function(err, data, response) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data);
+        }
+    }
+)
 
 
 
