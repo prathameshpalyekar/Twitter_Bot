@@ -84,13 +84,35 @@ var bot = new Twit({
 //     }
 // )
 
-bot.post('direct_messages/new', 
-    {screen_name: 'Sud_Verma187', text: 'Hi Sud, this message is sent from twitter bot.'}, 
-    function(err, data, response) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data)
+// bot.post('direct_messages/new', 
+//     {screen_name: 'Sud_Verma187', text: 'Hi Sud, this message is sent from twitter bot.'}, 
+//     function(err, data, response) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(data)
+//         }
+//     }
+// )
+
+function getBotTimeline() {
+    bot.get('statuses/home_timeline', {count: 5}, 
+        function(err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                data.forEach(function(d) {
+                    console.log(d.text);
+                    console.log(d.user.screen_name);
+                    console.log(d.id_str);
+                    console.log("\n");
+                })
+            }
         }
-    }
-)
+    )
+}
+
+getBotTimeline();
+
+
+
