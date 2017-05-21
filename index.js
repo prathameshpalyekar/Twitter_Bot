@@ -7,93 +7,107 @@ var bot = new Twit({
     timeout_ms: 60 * 1000
 });
 
-// bot.post('statuses/update',{status: 'Hello world !'}
-// , function(err, data, response){
-// 	if(err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log(data.text + ' was tweeted.');
-// 	}
-// })
+const PostId = '865980490259582980';
 
-// bot.get('followers/ids', {screen_name: 'Pratham_bot'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data)
-//         }
-//     }
-// )
+function tweet() {
+    bot.post('statuses/update', {status: 'Hello world !'}, 
+        function (err, data, response) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data.text + ' was tweeted.');
+        }
+    })
+}
 
-// bot.get('followers/list', {screen_name: 'Pratham_bot'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             data.users.forEach(function(user) {
-//                 console.log(user.screen_name);
-//             })
-//         }
-//     }
-// )
+function getListOfFollowersId() {
+    bot.get('followers/ids', {screen_name: 'Pratham_bot'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
 
-// bot.post('friendships/create', {screen_name: 'Sud_Verma187'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data)
-//         }
-//     }
-// )
+function getListOfFollowers() {
+    bot.get('followers/list', {screen_name: 'Pratham_bot'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                data.users.forEach(function(user) {
+                    console.log(user.screen_name);
+                });
+            }
+        }
+    )
+}
 
-// bot.get('friends/ids', {screen_name: 'Pratham_bot'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             // data.users.forEach(function(user) {
-//             //     console.log(user.name);
-//             // })
-//             console.log(data);
-//         }
-//     }
-// )
+function followPerson() {
+    bot.post('friendships/create', {screen_name: 'Sud_Verma187'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
 
-// bot.get('friends/list', {screen_name: 'Pratham_bot'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             data.users.forEach(function(user) {
-//                 console.log(user.name);
-//             })
-//             // console.log(data);
-//         }
-//     }
-// )
+function getListOfFriendsIds() {
+    bot.get('friends/ids', {screen_name: 'Pratham_bot'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
 
-// bot.get('friendships/lookup', {screen_name: 'Sud_Verma187'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data);
-//         }
-//     }
-// )
+function getListOfFriends() {
+    bot.get('friends/list', {screen_name: 'Pratham_bot'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                data.users.forEach(function(user) {
+                    console.log(user.name);
+                });
+            }
+        }
+    )
+}
 
-// bot.post('direct_messages/new', 
-//     {screen_name: 'Sud_Verma187', text: 'Hi Sud, this message is sent from twitter bot.'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data)
-//         }
-//     }
-// )
+function getFriendShipDetails() {
+    bot.get('friendships/lookup', {screen_name: 'Sud_Verma187'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
+
+function sendMessageToFriend() {
+    bot.post('direct_messages/new', 
+        {screen_name: 'Sud_Verma187', text: 'Hi Sud, this message is sent from twitter bot.'}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
 
 function getBotTimeline() {
     bot.get('statuses/home_timeline', {count: 5}, 
@@ -112,38 +126,66 @@ function getBotTimeline() {
     )
 }
 
-// getBotTimeline();
-
-// bot.post('statuses/unretweet/:id', {id: '865980490259582980'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data.text + ' was unretweeted.');
-//         }
-//     }
-// )
-
-// bot.post('favorites/create', {id: '865980490259582980'}, 
-//     function(err, data, response) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(data.text + ' was liked.');
-//         }
-//     }
-// )
-
-bot.post('statuses/update', 
-    {status: '@premierleague yay!', in_reply_to_status_id: '865980490259582980'}, 
-    function(err, data, response) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data);
+function reTweet() {
+    bot.post('statuses/retweet/:id', {id: PostId}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data.text + ' was retweeted.');
+            }
         }
-    }
-)
+    )
+}
+
+function cancelReTweet() {
+    bot.post('statuses/unretweet/:id', {id: PostId}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data.text + ' was unretweeted.');
+            }
+        }
+    )
+}
+
+function likePost() {
+    bot.post('favorites/create', {id: PostId}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data.text + ' was liked.');
+            }
+        }
+    )
+}
+
+function unLikePost() {
+    bot.post('favorites/destroy', {id: PostId}, 
+        function (err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data.text + ' was unliked.');
+            }
+        }
+    )
+}
+
+function replyToPost() {
+    bot.post('statuses/update', 
+        {status: '@premierleague yay!', in_reply_to_status_id: PostId}, 
+        function(err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+            }
+        }
+    )
+}
 
 
 
