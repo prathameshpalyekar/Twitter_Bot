@@ -187,5 +187,40 @@ function replyToPost() {
     )
 }
 
+var query = 'sachin';
+// query = '"sachin tendulkar"'; //two words
+// query = 'red OR blue'; // boolean
+// query = 'happy -birthday -anniversary'; // excluding words 
+// query = 'happy :)'; // adding emoticons
+// query = '#logan'; // hashtags
+// query = 'to:@apoorvingle'; // tweets to user
+// query = 'from:@apoorvingle'; // tweets from user
+// query = 'dance filter:safe' // using filter
+// query = 'dance filter:media' // using filter media
+// query = 'dance filter:images' // using filter images
+// query = 'dance filter:links' // using filter links
+// query = 'url:amazon'; // link with specific word
+// query = 'dance since:2017-04-26' // using filter time
+var resultType = 'recent';
+resultType = 'popular';
+
+function searchTweets() {
+    bot.get('search/tweets', {q: query, result_type: resultType, lang: 'en', count: 5}, 
+        function(err, data, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                data.statuses.forEach(function(status) {
+                    console.log(status.text);
+                    console.log(status.user.screen_name);
+                    console.log("\n");
+                })
+            }
+        }
+    )
+}
+
+searchTweets();
+
 
 
